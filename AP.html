@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bably</title>
+    <style>
+        /* CSS STYLES */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* Romantic background image */
+            background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2070') no-repeat center center/cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 60px 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease, color 0.5s ease;
+        }
+
+        .heart {
+            font-size: 100px;
+            cursor: pointer;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+            user-select: none;
+        }
+
+        .heart:active {
+            transform: scale(0.9);
+        }
+
+        .subtext {
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Small celebration effect class */
+        .glow {
+            color: #ff4d6d !important;
+            text-shadow: 0 0 20px #ff4d6d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <h1 id="message">Hey Bably...</h1>
+        <div class="heart" id="heart-btn">❤️</div>
+        <p class="subtext" id="hint">Click the heart to see a secret</p>
+    </div>
+
+    <script>
+        // JAVASCRIPT LOGIC
+        const heartBtn = document.getElementById('heart-btn');
+        const message = document.getElementById('message');
+        const hint = document.getElementById('hint');
+
+        heartBtn.addEventListener('click', () => {
+            // Update the message
+            message.innerText = "I love you bably!";
+            message.classList.add('glow');
+            
+            // Hide the hint
+            hint.style.opacity = "0";
+            
+            // Change the heart effect
+            heartBtn.style.animation = "pulse 0.5s infinite";
+            
+            // Change the background slightly for more "warmth"
+            document.querySelector('.overlay').style.background = "rgba(255, 182, 193, 0.2)";
+        });
+    </script>
+</body>
+</html>

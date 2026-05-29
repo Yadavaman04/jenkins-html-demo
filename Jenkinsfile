@@ -2,27 +2,18 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
-                echo 'Repository cloned successfully'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building HTML application'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing HTML application'
+                echo 'Downloading source code'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deployment completed'
+                sh '''
+                    cp AP.html /var/www/html/index.html
+                '''
             }
         }
     }
